@@ -21,12 +21,11 @@ debug('init')
 const esOpts = JSON.parse(fs.readFileSync('./config/elasticsearch.json'))
 const es = new ES(esOpts)
 
-// const dbOpts = JSON.parse(fs.readFileSync('./config/db.json'))
 const db = new SequelizeTweetsDbAdapter(es)
 const tp = new TweetsPuller(QUERY, db)
 tp.pull()
 
 
-new Server(db, es).listen(3000, () => {
+new Server(db).listen(3000, () => {
   debug("Server running on 3000")
 })
