@@ -4,9 +4,10 @@
 - [X] Elastic search
 - [X] search from frontend
 - [X] stream tweets
+- [ ] Fix missing IDs (found in ES, not found in sql)
 - [ ] Multiple users in tweeter puller
 - [X] Bulk save / pull tweets
-- [ ] limit to last 100
+- [X] limit to last 100
 - [ ] cmaybe better fulltext query - that displays less results?
 - [ ] Tests?
 - [ ] comments in adapters? (mostly the abstract one)
@@ -15,4 +16,4 @@
 - [ ] Stop using id+text+metadata and switch to {} ?
 - [ ] Document how to setup sequelize
 - [ ] Highlight search in tweets (frontend)
-- [ ] remove longjohn?
+- [X] remove longjohn?

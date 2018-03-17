@@ -1,31 +1,25 @@
 require('dotenv').config()
-
-if (process.env.NODE_ENV !== 'production') {
-  const longjohn = require('longjohn') // nicer stack trace
-  longjohn.async_trace_limit = -1
-}
-
 const fs = require('fs')
 const debug = require('debug')('klcc')
 const Server = require('./lib/server')
-const ES = require('./lib/es_tweets_db_adapter')
-// const JsonTweetsDbAdapter = require('./lib/json_tweets_db_adapter')
-// const SqliteTweetsDbAdapter = require('./lib/sqlite_tweets_db_adapter')
+const EsTweetsDbAdapter = require('./lib/es_tweets_db_adapter')
 const SequelizeTweetsDbAdapter = require('./lib/sequelize_tweets_db_adapter')
 const TweetsPuller = require('./lib/twitter_puller')
 
-const QUERY = "the lion king"
-
 
 debug('init')
-const esOpts = JSON.parse(fs.readFileSync('./config/elasticsearch.json'))
-const es = new ES(esOpts)
+const query        = process.env.QUERY
+const esOpts       = JSON.parse(fs.readFileSync('./config/elasticsearch.json'))
+const secondaryDb  = new EsTweetsDbAdapter(esOpts)
+const primaryDb    = new SequelizeTweetsDbAdapter(secondaryDb)
+const tweetsPuller = new TweetsPuller(query, primaryDb)
+tweetsPuller.pull()
 
-const db = new SequelizeTweetsDbAdapter(es)
-const tp = new TweetsPuller(QUERY, db)
-tp.pull()
 
-
-new Server(db).listen(3000, () => {
-  debug("Server running on 3000")
-})
+if (process.env.RUN_SERVER) {
+  const host = process.env.SERVER_HOST
+  const port = process.env.SERVER_PORT || 3000
+  new Server(primaryDb).listen(port, host, () => {
+    debug(`Server running on ${port}`)
+  })
+}
