@@ -1,0 +1,21 @@
+{
+  "name": "klcc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "klcc.js",
+  "scripts": {
+    "start": "DEBUG=* DEBUG_READ_TWEETS_FROM_FILE=1 node klcc.js",
+    "start_debug": "DEBUG=* DEBUG_READ_TWEETS_FROM_FILE=1 npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Carmon",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "sequelize": "^4.37.1",
+    "sequelize-cli": "^4.0.0",
+    "sqlite3": "^4.0.0",
+    "twitter": "^1.7.1"
+  }
+}
