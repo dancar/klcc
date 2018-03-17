@@ -1,8 +1,10 @@
-const refreshButton = document.getElementById("refreshButton")
+const searchButton = document.getElementById("searchButton")
+const text = document.getElementById("q")
 const container = document.getElementById("tweets-container")
 
-async function refresh (e) {
-  const response = await fetch("/tweets")
+async function search (e) {
+  const q = text.value
+  const response = await fetch(`/tweets?q=${encodeURI(q)}`)
   const tweets = await response.json()
   const items = tweets.map(
     item => `<li>${item.text}</li>`)
@@ -10,4 +12,4 @@ async function refresh (e) {
   container.innerHTML = html
 
 }
-refreshButton.onclick = refresh
+searchButton.onclick = search

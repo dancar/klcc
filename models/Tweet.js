@@ -7,7 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     }
-  }, {});
+  }, {
+    indexes: [
+      {
+        unique: true,
+        fields: ['tweet_id_str']
+      }
+    ]
+  });
   tweet.associate = function(models) {
     // associations can be defined here
   };

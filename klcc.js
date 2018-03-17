@@ -1,18 +1,20 @@
 require('dotenv').config()
-const server = require('./lib/server')
-
+const fs = require('fs')
 const debug = require('debug')('klcc')
-
-debug('init')
-
-const SequelizeTweetsDbAdapter = require('./lib/sequelize_tweets_db_adapter')
+const Server = require('./lib/server')
+const ES = require('./lib/es')
+const TweetsDbAdapter = require('./lib/json_tweets_db_adapter')
 const TweetsPuller = require('./lib/twitter_puller')
 
-const adapter = new SequelizeTweetsDbAdapter()
-const tp = new TweetsPuller("#MAGA", adapter, 5)
+
+debug('init')
+const esOpts = JSON.parse(fs.readFileSync('./config/elasticsearch.json'))
+const es = new ES(esOpts)
+const db = new TweetsDbAdapter(es)
+const tp = new TweetsPuller("Seinfeld", db, 5)
 tp.pull()
 
 
-server.listen(3000, () => {
+new Server(db, es).listen(3000, () => {
   debug("Server running on 3000")
 })
