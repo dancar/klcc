@@ -8,11 +8,13 @@ if (process.env.NODE_ENV !== 'production') {
 const fs = require('fs')
 const debug = require('debug')('klcc')
 const Server = require('./lib/server')
-const ES = require('./lib/es')
+const ES = require('./lib/es_tweets_db_adapter')
 // const JsonTweetsDbAdapter = require('./lib/json_tweets_db_adapter')
 // const SqliteTweetsDbAdapter = require('./lib/sqlite_tweets_db_adapter')
 const SequelizeTweetsDbAdapter = require('./lib/sequelize_tweets_db_adapter')
 const TweetsPuller = require('./lib/twitter_puller')
+
+const QUERY = "the lion king"
 
 
 debug('init')
@@ -21,7 +23,7 @@ const es = new ES(esOpts)
 
 // const dbOpts = JSON.parse(fs.readFileSync('./config/db.json'))
 const db = new SequelizeTweetsDbAdapter(es)
-const tp = new TweetsPuller("Seinfeld", db, 5)
+const tp = new TweetsPuller(QUERY, db)
 tp.pull()
 
 

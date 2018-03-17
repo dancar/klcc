@@ -1,16 +1,16 @@
-const form = document.getElementById("qform")
 const text = document.getElementById("q")
+const countLabel = document.getElementById("count")
 const container = document.getElementById("tweets-container")
 
 async function search (e) {
-  e.preventDefault()
   const q = text.value
   const response = await fetch(`/tweets?q=${encodeURI(q)}`)
   const tweets = await response.json()
   const items = tweets.map(
-    item => `<li>${item.text}</li>`)
+    item => `<li><i>(${item.metadata.handle})</i> ${item.text}</li>`)
   const html = "<ol>" + items.join() + "</ol>"
   container.innerHTML = html
+  countLabel.innerHTML = `(${tweets.length})`
 
 }
-form.onsubmit = search
+text.oninput = search

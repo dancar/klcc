@@ -1,10 +1,18 @@
-- [ ] Remove metadata?
-- [ ] comments in adapters?
-- [ ] IDs in sequelize?
-- [ ] Sequelize optimization?
-- [ ] add User handle, more metadata?
+- [X] IDs in sequelize?
+- [X] Sequelize optimization?
+- [X] add User handle, more metadata?
 - [X] Elastic search
-- [ ] search from frontend
-- [ ] stream tweets
+- [X] search from frontend
+- [X] stream tweets
 - [ ] Multiple users in tweeter puller
-- [ ] Bulk save / pull tweets
+- [X] Bulk save / pull tweets
+- [ ] limit to last 100
+- [ ] cmaybe better fulltext query - that displays less results?
+- [ ] Tests?
+- [ ] comments in adapters? (mostly the abstract one)
+- [ ] Update json adapter too?
+- [ ] create es index initially?
+- [ ] Stop using id+text+metadata and switch to {} ?
+- [ ] Document how to setup sequelize
+- [ ] Highlight search in tweets (frontend)
+- [ ] remove longjohn?
