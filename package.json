@@ -4,8 +4,8 @@
   "description": "",
   "main": "klcc.js",
   "scripts": {
-    "start": "DEBUG=* DEBUG_READ_TWEETS_FROM_FILE=1 node klcc.js",
-    "start_debug": "DEBUG=* DEBUG_READ_TWEETS_FROM_FILE=1 npm start",
+    "start": "./node_modules/.bin/sequelize db:migrate && node klcc.js",
+    "debug": "DEBUG=* DEBUG_READ_TWEETS_FROM_FILE=1 npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dan Carmon",

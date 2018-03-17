@@ -4,8 +4,6 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('tweets', {
       id: {
-        allowNull: false,
-        autoIncrement: true,
         type: Sequelize.INTEGER
       },
       text: {

@@ -1,3 +1,5 @@
+db/development.db
+db/test.db
 bla.js
 tweets.json
 .env

@@ -1,1 +1,7 @@
 - [ ] Remove metadata?
+- [ ] comments in adapters?
+- [ ] IDs in sequelize?
+- [ ] Sequelize optimization?
+- [ ] add User handle, more metadata?
+- [ ] Elastic search
+- [ ] search from frontend
