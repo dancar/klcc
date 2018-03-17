@@ -3,7 +3,8 @@
 - [ ] IDs in sequelize?
 - [ ] Sequelize optimization?
 - [ ] add User handle, more metadata?
-- [ ] Elastic search
+- [X] Elastic search
 - [ ] search from frontend
 - [ ] stream tweets
 - [ ] Multiple users in tweeter puller
+- [ ] Bulk save / pull tweets

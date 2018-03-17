@@ -5,9 +5,11 @@
   <body>
     <h1>KLCC</h1>
     <hr/>
-    <label for="q" >Query: </label>
-    <input autofocus type="text" id="q" name="q" />
-    <button id="searchButton" default>Search</button>
+    <form id="qform">
+      <label for="q" >Query: </label>
+      <input autofocus type="text" id="q" name="q" />
+      <input type="submit" value="Search" />
+    </form>
     <div id="tweets-container" />
     <script type="text/javascript" src="/index.js"> </script>
   </body>

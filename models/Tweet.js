@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     tweet_id_str: {
       type: DataTypes.STRING,
       unique: true
-    }
+    },
+    metadata: DataTypes.JSON
   }, {
     indexes: [
       {

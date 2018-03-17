@@ -15,6 +15,9 @@ module.exports = {
       tweet_id_str: {
         type: Sequelize.STRING
       },
+      metadata: {
+        type: Sequelize.JSON
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
