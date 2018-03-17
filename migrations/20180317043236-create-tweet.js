@@ -5,14 +5,10 @@ module.exports = {
     return queryInterface.createTable('tweets', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      text: {
         type: Sequelize.STRING
       },
-      tweet_id_str: {
+      text: {
         type: Sequelize.STRING
       },
       metadata: {
