@@ -8,6 +8,10 @@ const TweetsPuller = require('./lib/twitter_puller')
 
 
 debug('init')
+if(!fs.existsSync('./.env')) {
+  throw "No .env file found"
+}
+
 const query        = process.env.QUERY
 const esOpts       = JSON.parse(fs.readFileSync('./config/elasticsearch.json'))
 const secondaryDb  = new EsTweetsDbAdapter(esOpts)

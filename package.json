@@ -4,7 +4,7 @@
   "description": "",
   "main": "klcc.js",
   "scripts": {
-    "start": "./node_modules/.bin/sequelize db:migrate && node klcc.js",
+    "start": "npm i && ./node_modules/.bin/sequelize db:migrate && node klcc.js",
     "debug": "node --trace-warnings klcc.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
