@@ -1,6 +1,7 @@
 db/development.db
 db/test.db
 bla.js
+TODO.org
 tweets.json
 .env
 node_modules
